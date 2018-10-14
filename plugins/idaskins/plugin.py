@@ -79,7 +79,7 @@ class IdaSkinsPlugin(QObject, idaapi.plugin_t):
                 print('[IDASkins] Updating buggy v2.0.0 theme path')
                 self._settings.selected_theme_dir = os.path.split(theme_dir)[-1]
 
-        self._theme_selector = None
+        #self._theme_selector = None
         self.apply_stylesheet_from_settings()
 
         # Subscribe UI notifications.
@@ -142,7 +142,7 @@ class IdaSkinsPlugin(QObject, idaapi.plugin_t):
         self._theme_selector.show()
 
     def on_theme_selection_accepted(self):
-        theme_dir = self.sender().selected_theme_dir
+        theme_dir = self._theme_selector.selected_theme_dir
         if theme_dir:
             self._settings.selected_theme_dir = theme_dir
             self.apply_stylesheet_from_settings()
